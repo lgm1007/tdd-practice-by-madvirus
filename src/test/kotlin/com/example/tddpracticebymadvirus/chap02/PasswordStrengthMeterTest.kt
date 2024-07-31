@@ -64,4 +64,12 @@ class PasswordStrengthMeterTest {
         val result: PasswordMeterResult = meter.meter("abcdEFGH")
         assertThat(result).isEqualTo(PasswordMeterResult.NORMAL)
     }
+
+    @Test
+    @DisplayName("숫자와 대문자를 포함하는 비밀번호 확인하기")
+    fun meetNumberAndCapitalLetterConditionStrength() {
+        val meter: PasswordStrengthMeter = PasswordStrengthMeter()
+        val result: PasswordMeterResult = meter.meter("ABC1")
+        assertThat(result).isEqualTo(PasswordMeterResult.NORMAL)
+    }
 }
