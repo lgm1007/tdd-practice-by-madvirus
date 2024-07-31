@@ -48,4 +48,12 @@ class PasswordStrengthMeterTest {
         val result: PasswordMeterResult = meter.meter("ABCD")
         assertThat(result).isEqualTo(PasswordMeterResult.WEAK)
     }
+
+    @Test
+    @DisplayName("길이가 8 이상이고 숫자를 포함하는 비밀번호 확인하기")
+    fun meetTwoConditionStrength() {
+        val meter: PasswordStrengthMeter = PasswordStrengthMeter()
+        val result: PasswordMeterResult = meter.meter("abcd1234")
+        assertThat(result).isEqualTo(PasswordMeterResult.NORMAL)
+    }
 }
