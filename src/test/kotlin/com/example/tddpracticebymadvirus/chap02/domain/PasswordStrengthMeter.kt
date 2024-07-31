@@ -6,19 +6,19 @@ class PasswordStrengthMeter {
 
     fun meter(password: String): PasswordMeterResult {
         val condition8Length = condition8Length(password)
-        val conditionContainsNumberic = conditionContainsNumberic(password)
+        val conditionContainsNumber = conditionContainsNumber(password)
         val conditionContainsCapitalLetter = conditionContainsCapitalLetter(password)
 
         if (condition8Length &&
-            conditionContainsNumberic &&
+            conditionContainsNumber &&
             conditionContainsCapitalLetter
         ) {
             return PasswordMeterResult.STRENGTH
         }
 
-        if ((condition8Length && conditionContainsNumberic) ||
+        if ((condition8Length && conditionContainsNumber) ||
             (condition8Length && conditionContainsCapitalLetter) ||
-            (conditionContainsNumberic && conditionContainsCapitalLetter)) {
+            (conditionContainsNumber && conditionContainsCapitalLetter)) {
             return PasswordMeterResult.NORMAL
         }
 
@@ -29,7 +29,7 @@ class PasswordStrengthMeter {
         return password.length >= PASSWORD_CONDITION_LENGTH
     }
 
-    private fun conditionContainsNumberic(password: String): Boolean {
+    private fun conditionContainsNumber(password: String): Boolean {
         for (c in password.toCharArray()) {
             if (c in '0'..'9') {
                 return true
