@@ -72,4 +72,12 @@ class PasswordStrengthMeterTest {
         val result: PasswordMeterResult = meter.meter("ABC1")
         assertThat(result).isEqualTo(PasswordMeterResult.NORMAL)
     }
+
+    @Test
+    @DisplayName("패스워드가 빈 값인 경우 확인하기")
+    fun meetEmptyPasswordConditionStrength() {
+        val meter: PasswordStrengthMeter = PasswordStrengthMeter()
+        val result: PasswordMeterResult = meter.meter("")
+        assertThat(result).isEqualTo(PasswordMeterResult.INVALID)
+    }
 }

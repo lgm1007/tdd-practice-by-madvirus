@@ -9,6 +9,10 @@ class PasswordStrengthMeter {
         val conditionContainsNumber = conditionContainsNumber(password)
         val conditionContainsCapitalLetter = conditionContainsCapitalLetter(password)
 
+        if (password.isBlank()) {
+            return PasswordMeterResult.INVALID
+        }
+
         if (condition8Length &&
             conditionContainsNumber &&
             conditionContainsCapitalLetter
