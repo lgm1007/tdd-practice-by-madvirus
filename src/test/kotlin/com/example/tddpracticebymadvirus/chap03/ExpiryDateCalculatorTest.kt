@@ -23,17 +23,22 @@ class ExpiryDateCalculatorTest {
         val billingDate4: LocalDate = LocalDate.of(2020, 5, 31)
         val payAmount: Int = 10000
 
-        val calculator: ExpiryDateCalculator = ExpiryDateCalculator()
-        val expiryDate1: LocalDate = calculator.calculateExpiryDate(billingDate1, payAmount)
-        val expiryDate2: LocalDate = calculator.calculateExpiryDate(billingDate2, payAmount)
-        val expiryDate3: LocalDate = calculator.calculateExpiryDate(billingDate3, payAmount)
-        val expiryDate4: LocalDate = calculator.calculateExpiryDate(billingDate4, payAmount)
+        val expiryDate1: LocalDate = LocalDate.of(2024, 9, 7)
+        val expiryDate2: LocalDate = LocalDate.of(2021, 1, 20)
+        val expiryDate3: LocalDate = LocalDate.of(2024, 2, 29)
+        val expiryDate4: LocalDate = LocalDate.of(2020, 6, 30)
 
         assertAll(
-            { assertThat(expiryDate1).isEqualTo(LocalDate.of(2024, 9, 7)) },
-            { assertThat(expiryDate2).isEqualTo(LocalDate.of(2021, 1, 20)) },
-            { assertThat(expiryDate3).isEqualTo(LocalDate.of(2024, 2, 29)) },
-            { assertThat(expiryDate4).isEqualTo(LocalDate.of(2020, 6, 30)) }
+            { assertExpiryDate(billingDate1, payAmount, expiryDate1) },
+            { assertExpiryDate(billingDate2, payAmount, expiryDate2) },
+            { assertExpiryDate(billingDate3, payAmount, expiryDate3) },
+            { assertExpiryDate(billingDate4, payAmount, expiryDate4) },
         )
+    }
+
+    private fun assertExpiryDate(billingDate: LocalDate, payAmount: Int, expiryDate: LocalDate) {
+        val calculator: ExpiryDateCalculator = ExpiryDateCalculator()
+        val actual = calculator.calculateExpiryDate(billingDate, payAmount)
+        assertThat(actual).isEqualTo(expiryDate)
     }
 }
