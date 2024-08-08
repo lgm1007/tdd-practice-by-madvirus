@@ -18,16 +18,22 @@ class ExpiryDateCalculatorTest {
     @DisplayName("만원 납부하면 한달 뒤가 만료일이 되는 것 확인하기")
     fun expirationDateOneMonthLater() {
         val billingDate1: LocalDate = LocalDate.of(2024, 8, 7)
-        val billingDate2: LocalDate = LocalDate.of(2020, 12, 20 )
+        val billingDate2: LocalDate = LocalDate.of(2020, 12, 20)
+        val billingDate3: LocalDate = LocalDate.of(2024, 1, 31)
+        val billingDate4: LocalDate = LocalDate.of(2020, 5, 31)
         val payAmount: Int = 10000
 
         val calculator: ExpiryDateCalculator = ExpiryDateCalculator()
         val expiryDate1: LocalDate = calculator.calculateExpiryDate(billingDate1, payAmount)
         val expiryDate2: LocalDate = calculator.calculateExpiryDate(billingDate2, payAmount)
+        val expiryDate3: LocalDate = calculator.calculateExpiryDate(billingDate3, payAmount)
+        val expiryDate4: LocalDate = calculator.calculateExpiryDate(billingDate4, payAmount)
 
         assertAll(
             { assertThat(expiryDate1).isEqualTo(LocalDate.of(2024, 9, 7)) },
-            { assertThat(expiryDate2).isEqualTo(LocalDate.of(2021, 1, 20)) }
+            { assertThat(expiryDate2).isEqualTo(LocalDate.of(2021, 1, 20)) },
+            { assertThat(expiryDate3).isEqualTo(LocalDate.of(2024, 2, 29)) },
+            { assertThat(expiryDate4).isEqualTo(LocalDate.of(2020, 6, 30)) }
         )
     }
 }
