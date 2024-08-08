@@ -1,6 +1,7 @@
 package com.example.tddpracticebymadvirus.chap03
 
 import com.example.tddpracticebymadvirus.chap03.domain.ExpiryDateCalculator
+import com.example.tddpracticebymadvirus.chap03.dto.PayData
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertAll
 import org.junit.jupiter.api.DisplayName
@@ -29,16 +30,16 @@ class ExpiryDateCalculatorTest {
         val expiryDate4: LocalDate = LocalDate.of(2020, 6, 30)
 
         assertAll(
-            { assertExpiryDate(billingDate1, payAmount, expiryDate1) },
-            { assertExpiryDate(billingDate2, payAmount, expiryDate2) },
-            { assertExpiryDate(billingDate3, payAmount, expiryDate3) },
-            { assertExpiryDate(billingDate4, payAmount, expiryDate4) },
+            { assertExpiryDate(PayData(billingDate1, billingDate1, payAmount), expiryDate1) },
+            { assertExpiryDate(PayData(billingDate2, billingDate2, payAmount), expiryDate2) },
+            { assertExpiryDate(PayData(billingDate3, billingDate3, payAmount), expiryDate3) },
+            { assertExpiryDate(PayData(billingDate4, billingDate4, payAmount), expiryDate4) },
         )
     }
 
-    private fun assertExpiryDate(billingDate: LocalDate, payAmount: Int, expiryDate: LocalDate) {
-        val calculator: ExpiryDateCalculator = ExpiryDateCalculator()
-        val actual = calculator.calculateExpiryDate(billingDate, payAmount)
+    private fun assertExpiryDate(payData: PayData, expiryDate: LocalDate) {
+        val calculator = ExpiryDateCalculator()
+        val actual = calculator.calculateExpiryDate(payData)
         assertThat(actual).isEqualTo(expiryDate)
     }
 }
