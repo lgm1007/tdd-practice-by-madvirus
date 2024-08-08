@@ -5,10 +5,18 @@ import java.time.LocalDate
 
 class ExpiryDateCalculator {
     fun calculateExpiryDate(payData: PayData): LocalDate {
-        if (payData.firstBillingDate.equals(LocalDate.of(2019, 1, 31))) {
-            return LocalDate.of(2019, 3, 31)
+        val plusMonthsBillingDate = payData.billingDate.plusMonths(1)
+
+        if (payData.firstBillingDate == payData.billingDate) {
+            return plusMonthsBillingDate
         }
 
-        return payData.billingDate.plusMonths(1)
+        // dayOfMonth: 해당 월의 일을 반환 (1~31)
+        if (payData.firstBillingDate.dayOfMonth != plusMonthsBillingDate.dayOfMonth) {
+            // withDayOfMonth(int day): day 값을 일로 받은 날짜로 변환
+            return plusMonthsBillingDate.withDayOfMonth(payData.firstBillingDate.dayOfMonth)
+        }
+
+        return plusMonthsBillingDate
     }
 }
