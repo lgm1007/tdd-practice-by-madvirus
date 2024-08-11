@@ -61,12 +61,24 @@ class ExpiryDateCalculatorTest {
     @Test
     @DisplayName("지불한 금액 1만원이 늘어나면 만료일도 1달이 늘어나는 기능 확인하기")
     fun amountIncreaseAndExpiryDateIncrease() {
-        val payData = PayData(
+        val payData1 = PayData(
             null,
             LocalDate.of(2019, 3, 1),
             20000
         );
-        assertExpiryDate(payData, LocalDate.of(2019, 5, 1))
+        val payData2 = PayData(
+            LocalDate.of(2019, 1, 31),
+            LocalDate.of(2019, 2, 28),
+            20000
+        );
+
+        val expiryDate1 = LocalDate.of(2019, 5, 1)
+        val expiryDate2 = LocalDate.of(2019, 4, 30)
+
+        assertAll(
+            { assertExpiryDate(payData1, expiryDate1) },
+            { assertExpiryDate(payData2, expiryDate2) }
+        )
     }
 
     private fun assertExpiryDate(payData: PayData, expiryDate: LocalDate) {
