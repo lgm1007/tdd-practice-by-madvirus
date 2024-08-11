@@ -65,12 +65,12 @@ class ExpiryDateCalculatorTest {
             null,
             LocalDate.of(2019, 3, 1),
             20000
-        );
+        )
         val payData2 = PayData(
             LocalDate.of(2019, 1, 31),
             LocalDate.of(2019, 2, 28),
             20000
-        );
+        )
 
         val expiryDate1 = LocalDate.of(2019, 5, 1)
         val expiryDate2 = LocalDate.of(2019, 4, 30)
@@ -78,6 +78,36 @@ class ExpiryDateCalculatorTest {
         assertAll(
             { assertExpiryDate(payData1, expiryDate1) },
             { assertExpiryDate(payData2, expiryDate2) }
+        )
+    }
+
+    @Test
+    @DisplayName("10만원을 지불하면 1년 제공하는 기능 확인하기")
+    fun amountForOneYearExpiryDate() {
+        val payData1 = PayData(
+            null,
+            LocalDate.of(2019, 1, 28),
+            100000
+        )
+        val payData2 = PayData(
+            null,
+            LocalDate.of(2020, 2, 29),
+            100000
+        )
+        val payData3 = PayData(
+            null,
+            LocalDate.of(2019, 1, 28),
+            130000
+        )
+
+        val expiryDate1 = LocalDate.of(2020, 1, 28)
+        val expiryDate2 = LocalDate.of(2021, 2, 28)
+        val expiryDate3 = LocalDate.of(2020, 4, 28)
+
+        assertAll(
+            { assertExpiryDate(payData1, expiryDate1) },
+            { assertExpiryDate(payData2, expiryDate2) },
+            { assertExpiryDate(payData3, expiryDate3) }
         )
     }
 

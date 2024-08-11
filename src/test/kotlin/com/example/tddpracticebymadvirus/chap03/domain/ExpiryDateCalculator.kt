@@ -4,34 +4,38 @@ import com.example.tddpracticebymadvirus.chap03.dto.PayData
 import java.time.LocalDate
 import java.time.YearMonth
 
+const val ONE_YEAR_PAY_AMOUNT = 100000
+const val ONE_MONTH_PAY_AMOUNT = 10000
+
 class ExpiryDateCalculator {
     fun calculateExpiryDate(payData: PayData): LocalDate {
-        val addMonth: Int = payData.payAmount / 10000;
-        val plusMonthsBillingDate = payData.billingDate.plusMonths(addMonth.toLong())
+        val addYear: Int = payData.payAmount / ONE_YEAR_PAY_AMOUNT
+        val addMonth: Int = (payData.payAmount - (addYear * ONE_YEAR_PAY_AMOUNT)) / ONE_MONTH_PAY_AMOUNT
+        val expectedExpiryDate = payData.billingDate.plusYears(addYear.toLong()).plusMonths(addMonth.toLong())
 
         if (payData.firstBillingDate != null) {
             if (payData.firstBillingDate == payData.billingDate) {
-                return plusMonthsBillingDate
+                return expectedExpiryDate
             }
 
-            if (!isSameDayOfMonth(payData.firstBillingDate, plusMonthsBillingDate)) {
+            if (!isSameDayOfMonth(payData.firstBillingDate, expectedExpiryDate)) {
                 // dayOfMonth: 해당 날짜의 일자를 반환 (1~31)
                 val dayOfFirstBilling: Int = payData.firstBillingDate.dayOfMonth
-                val dayLengthOfExpectExpiryDate: Int = lastDayOfMonth(plusMonthsBillingDate)
+                val dayLengthOfExpectedExpiryDate: Int = lastDayOfMonth(expectedExpiryDate)
 
                 // 예상 만료일이 포함된 달의 마지막 날 < 첫 납부일의 일자
-                if (dayLengthOfExpectExpiryDate < dayOfFirstBilling) {
+                if (dayLengthOfExpectedExpiryDate < dayOfFirstBilling) {
                     // 예상 만료일의 마지막 날로 일자를 조정
-                    return plusMonthsBillingDate.withDayOfMonth(
-                        dayLengthOfExpectExpiryDate
+                    return expectedExpiryDate.withDayOfMonth(
+                        dayLengthOfExpectedExpiryDate
                     )
                 }
                 // withDayOfMonth(int day): day 값을 일로 받은 날짜로 변환
-                return plusMonthsBillingDate.withDayOfMonth(dayOfFirstBilling)
+                return expectedExpiryDate.withDayOfMonth(dayOfFirstBilling)
             }
         }
 
-        return plusMonthsBillingDate
+        return expectedExpiryDate
     }
 
     /**
