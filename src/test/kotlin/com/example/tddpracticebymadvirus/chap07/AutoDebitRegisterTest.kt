@@ -9,9 +9,10 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
-class AutoDebitRegisterTest(
-    private var register: AutoDebitRegister
-) {
+class AutoDebitRegisterTest {
+
+    private lateinit var register: AutoDebitRegister
+
     @BeforeEach
     fun setUp() {
         val validator = CardNumberValidator()

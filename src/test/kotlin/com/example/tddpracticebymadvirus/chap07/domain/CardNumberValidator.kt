@@ -6,8 +6,8 @@ import java.net.http.HttpRequest
 import java.net.http.HttpRequest.BodyPublishers
 import java.net.http.HttpResponse.BodyHandlers
 
-class CardNumberValidator {
-    fun validate(cardNumber: String): CardValidity {
+open class CardNumberValidator {
+    open fun validate(cardNumber: String): CardValidity {
         val httpClient = HttpClient.newHttpClient()
         val request = HttpRequest.newBuilder()
             .uri(URI.create("https://some-external-pg.com/card"))
