@@ -1,5 +1,6 @@
 package com.example.tddpracticebymadvirus.chap07.domain
 
+import com.example.tddpracticebymadvirus.chap07.persistence.entity.AutoDebitInfo
 import java.time.LocalDateTime
 
 class AutoDebitRegister(
