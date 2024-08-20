@@ -4,7 +4,7 @@ import com.example.tddpracticebymadvirus.chap07.domain.AutoDebitRegister
 import com.example.tddpracticebymadvirus.chap07.domain.AutoDebitReq
 import com.example.tddpracticebymadvirus.chap07.domain.CardNumberValidator
 import com.example.tddpracticebymadvirus.chap07.domain.CardValidity
-import com.example.tddpracticebymadvirus.chap07.persistence.entity.JpaAutoDebitInfoRepository
+import com.example.tddpracticebymadvirus.chap07.persistence.JpaAutoDebitInfoRepository
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
