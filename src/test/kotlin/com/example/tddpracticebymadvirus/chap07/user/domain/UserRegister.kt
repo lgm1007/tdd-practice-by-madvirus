@@ -6,6 +6,8 @@ class UserRegister(
     private val passwordChecker: WeakPasswordChecker
 ) {
     fun register(id: String, pw: String, email: String) {
-        throw WeakPasswordException()
+        if (passwordChecker.checkPasswordWeak(pw)) {
+            throw WeakPasswordException()
+        }
     }
 }
