@@ -8,6 +8,7 @@ import com.example.tddpracticebymadvirus.chap07.user.persistence.entity.User
 class UserRegister(
     private val passwordChecker: WeakPasswordChecker,
     private val userRepository: UserRepository,
+    private val emailNotifier: EmailNotifier,
 ) {
     fun register(id: String, pw: String, email: String) {
         if (passwordChecker.checkPasswordWeak(pw)) {
