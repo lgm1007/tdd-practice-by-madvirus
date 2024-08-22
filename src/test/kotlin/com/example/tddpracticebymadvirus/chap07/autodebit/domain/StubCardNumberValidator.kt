@@ -1,4 +1,4 @@
-package com.example.tddpracticebymadvirus.chap07.domain
+package com.example.tddpracticebymadvirus.chap07.autodebit.domain
 
 class StubCardNumberValidator(
     var invalidNo: String?,

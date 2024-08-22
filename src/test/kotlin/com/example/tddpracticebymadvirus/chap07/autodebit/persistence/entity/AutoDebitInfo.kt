@@ -1,4 +1,4 @@
-package com.example.tddpracticebymadvirus.chap07.persistence.entity
+package com.example.tddpracticebymadvirus.chap07.autodebit.persistence.entity
 
 import java.time.LocalDateTime
 

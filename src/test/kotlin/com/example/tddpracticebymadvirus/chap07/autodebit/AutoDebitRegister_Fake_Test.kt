@@ -1,10 +1,10 @@
-package com.example.tddpracticebymadvirus.chap07
+package com.example.tddpracticebymadvirus.chap07.autodebit
 
-import com.example.tddpracticebymadvirus.chap07.domain.AutoDebitRegister
-import com.example.tddpracticebymadvirus.chap07.domain.AutoDebitReq
-import com.example.tddpracticebymadvirus.chap07.domain.StubCardNumberValidator
-import com.example.tddpracticebymadvirus.chap07.persistence.MemoryAutoDebitInfoRepository
-import com.example.tddpracticebymadvirus.chap07.persistence.entity.AutoDebitInfo
+import com.example.tddpracticebymadvirus.chap07.autodebit.domain.AutoDebitRegister
+import com.example.tddpracticebymadvirus.chap07.autodebit.domain.dto.AutoDebitReq
+import com.example.tddpracticebymadvirus.chap07.autodebit.domain.StubCardNumberValidator
+import com.example.tddpracticebymadvirus.chap07.autodebit.persistence.MemoryAutoDebitInfoRepository
+import com.example.tddpracticebymadvirus.chap07.autodebit.persistence.entity.AutoDebitInfo
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime

@@ -1,7 +1,7 @@
-package com.example.tddpracticebymadvirus.chap07.persistence
+package com.example.tddpracticebymadvirus.chap07.autodebit.persistence
 
-import com.example.tddpracticebymadvirus.chap07.domain.AutoDebitInfoRepository
-import com.example.tddpracticebymadvirus.chap07.persistence.entity.AutoDebitInfo
+import com.example.tddpracticebymadvirus.chap07.autodebit.domain.AutoDebitInfoRepository
+import com.example.tddpracticebymadvirus.chap07.autodebit.persistence.entity.AutoDebitInfo
 
 class MemoryAutoDebitInfoRepository(
     private val infos: HashMap<String, AutoDebitInfo> = HashMap()

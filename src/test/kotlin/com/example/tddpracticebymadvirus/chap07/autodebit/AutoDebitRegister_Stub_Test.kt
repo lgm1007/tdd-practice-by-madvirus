@@ -1,10 +1,10 @@
-package com.example.tddpracticebymadvirus.chap07
+package com.example.tddpracticebymadvirus.chap07.autodebit
 
-import com.example.tddpracticebymadvirus.chap07.domain.AutoDebitRegister
-import com.example.tddpracticebymadvirus.chap07.domain.AutoDebitReq
-import com.example.tddpracticebymadvirus.chap07.domain.CardValidity
-import com.example.tddpracticebymadvirus.chap07.domain.StubCardNumberValidator
-import com.example.tddpracticebymadvirus.chap07.persistence.StubAutoDebitInfoRepository
+import com.example.tddpracticebymadvirus.chap07.autodebit.domain.AutoDebitRegister
+import com.example.tddpracticebymadvirus.chap07.autodebit.domain.dto.AutoDebitReq
+import com.example.tddpracticebymadvirus.chap07.autodebit.domain.CardValidity
+import com.example.tddpracticebymadvirus.chap07.autodebit.domain.StubCardNumberValidator
+import com.example.tddpracticebymadvirus.chap07.autodebit.persistence.StubAutoDebitInfoRepository
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
