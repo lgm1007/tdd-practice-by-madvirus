@@ -17,7 +17,7 @@ class AutoDebitRegister_Stub_Test {
 
     @BeforeEach
     fun setUp() {
-        stubValidator = StubCardNumberValidator(null)
+        stubValidator = StubCardNumberValidator(null, null)
         stubRepository = StubAutoDebitInfoRepository()
         register = AutoDebitRegister(stubValidator, stubRepository)
     }
@@ -30,5 +30,15 @@ class AutoDebitRegister_Stub_Test {
         val result = this.register.register(req)
 
         assertEquals(CardValidity.INVALID, result.validity)
+    }
+
+    @Test
+    fun theftCard() {
+        stubValidator.theftNo = "1234567890123456"
+
+        val req = AutoDebitReq("user1", "1234567890123456")
+        val result = this.register.register(req)
+
+        assertEquals(CardValidity.THEFT, result.validity)
     }
 }
