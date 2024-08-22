@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import kotlin.test.assertEquals
 
 class UserRegisterTest {
     private lateinit var userRegister: UserRegister
@@ -40,5 +41,15 @@ class UserRegisterTest {
         assertThrows<DupIdException> {
             userRegister.register("id", "pw2", "email")
         }
+    }
+
+    @Test
+    @DisplayName("같은 아이디가 없으면 가입 성공")
+    fun noDupIdRegisterSuccess() {
+        userRegister.register("id", "pw", "email")
+
+        val savedUser = fakeRepository.findById("id")
+        assertEquals("id", savedUser?.id)
+        assertEquals("email", savedUser?.email)
     }
 }

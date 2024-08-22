@@ -3,6 +3,7 @@ package com.example.tddpracticebymadvirus.chap07.user.domain
 import com.example.tddpracticebymadvirus.chap07.user.exception.DupIdException
 import com.example.tddpracticebymadvirus.chap07.user.exception.WeakPasswordException
 import com.example.tddpracticebymadvirus.chap07.user.persistence.UserRepository
+import com.example.tddpracticebymadvirus.chap07.user.persistence.entity.User
 
 class UserRegister(
     private val passwordChecker: WeakPasswordChecker,
@@ -16,5 +17,6 @@ class UserRegister(
         if (user != null) {
             throw DupIdException()
         }
+        userRepository.save(User(id, pw, email))
     }
 }
