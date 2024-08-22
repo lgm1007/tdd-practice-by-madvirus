@@ -12,6 +12,9 @@ class UserRegister(
         if (passwordChecker.checkPasswordWeak(pw)) {
             throw WeakPasswordException()
         }
-        throw DupIdException()
+        val user = userRepository.findById(id)
+        if (user != null) {
+            throw DupIdException()
+        }
     }
 }
