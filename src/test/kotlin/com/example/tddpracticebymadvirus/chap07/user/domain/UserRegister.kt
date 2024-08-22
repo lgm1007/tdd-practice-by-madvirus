@@ -19,5 +19,7 @@ class UserRegister(
             throw DupIdException()
         }
         userRepository.save(User(id, pw, email))
+
+        emailNotifier.sendRegisterEmail(email)
     }
 }
