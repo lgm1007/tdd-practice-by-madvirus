@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.BDDMockito
 import org.mockito.Mockito
+import org.mockito.kotlin.argumentCaptor
+import kotlin.test.assertEquals
 
 class UserRegisterMockTest {
     private lateinit var userRegister: UserRegister
@@ -46,5 +48,22 @@ class UserRegisterMockTest {
             // String 타입 인자로 checkPasswordWeak() 메서드가 호출이 되었는지 확인
             .checkPasswordWeak(BDDMockito.anyString())
 
+    }
+
+    @Test
+    @DisplayName("가입하면 메일을 전송")
+    fun whenRegisterThenSendMail() {
+        userRegister.register("id", "pw", "email@email.com")
+
+        // argumentCaptor: 모의 객체 메서드를 호출할 때 전달한 객체를 담는 기능
+        // kotlin에서 argumentCaptor 사용 시 mockito-kotlin 라이브러리 사용
+        val captor = argumentCaptor<String>()
+        BDDMockito.then(mockEmailNotifier)
+            .should()
+            // captor.capture(): 메서드 호출 시 전달한 인자를 argumentCaptor에 담기
+            .sendRegisterEmail(captor.capture())
+
+        val realEmail = captor.firstValue
+        assertEquals("email@email.com", realEmail)
     }
 }
