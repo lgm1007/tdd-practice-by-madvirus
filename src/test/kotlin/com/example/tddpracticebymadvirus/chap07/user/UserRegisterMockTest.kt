@@ -35,4 +35,16 @@ class UserRegisterMockTest {
             userRegister.register("id", "pw", "email")
         }
     }
+
+    @Test
+    @DisplayName("회원 가입 암호 검사 수행")
+    fun checkPassword() {
+        userRegister.register("id", "pw", "email")
+
+        BDDMockito.then(mockPasswordChecker)
+            .should()
+            // String 타입 인자로 checkPasswordWeak() 메서드가 호출이 되었는지 확인
+            .checkPasswordWeak(BDDMockito.anyString())
+
+    }
 }
