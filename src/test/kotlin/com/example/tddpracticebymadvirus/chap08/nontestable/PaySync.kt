@@ -6,6 +6,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 
 class PaySync {
+    // 의존 대상을 직접 생성하는 점 또한 테스트를 어렵게 만드는 요인
     private val payInfoDao = PayInfoDao()
 
     fun sync() {
