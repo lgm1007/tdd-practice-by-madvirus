@@ -8,6 +8,7 @@ import com.example.tddpracticebymadvirus.chap08.subscription.exception.NoSubscri
 import java.time.LocalDate
 
 class UserPointCalculator(
+    // 테스트하기 위해선 SubscriptionDao, ProductDao에 대한 대역 구성 필요
     private val subscriptionDao: SubscriptionDao,
     private val productDao: ProductDao,
 ) {
