@@ -1,10 +1,13 @@
 package com.example.tddpracticebymadvirus.chap08.testable
 
 import com.example.tddpracticebymadvirus.chap08.payinfo.PayInfo
+import com.example.tddpracticebymadvirus.chap08.payinfo.PayInfoDao
 import java.nio.file.Files
 import java.nio.file.Paths
 
-class PaySync {
+class PaySync(
+    private val payInfoDao: PayInfoDao
+) {
     private var filePath = "D:\\data\\pay\\cp0001.csv"
 
     fun setFilePath(filePath: String) {
