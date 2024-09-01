@@ -1,4 +1,4 @@
-package com.example.tddpracticebymadvirus.chap09
+package com.example.tddpracticebymadvirus.chap09.user
 
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

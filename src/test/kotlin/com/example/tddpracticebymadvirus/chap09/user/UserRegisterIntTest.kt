@@ -1,4 +1,4 @@
-package com.example.tddpracticebymadvirus.chap09
+package com.example.tddpracticebymadvirus.chap09.user
 
 import com.example.tddpracticebymadvirus.chap07.user.exception.DupIdException
 import com.example.tddpracticebymadvirus.chap09.user.UserRegister
