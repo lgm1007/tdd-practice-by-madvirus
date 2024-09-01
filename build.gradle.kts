@@ -30,6 +30,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.1.0")
+    testImplementation("com.github.tomakehurst:wiremock-jre8:2.23.2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
